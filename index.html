@@ -231,10 +231,16 @@
                     <a href="#get-a-specific-todo" class="toc-h2 toc-link" data-title="ToDos">Get a Specific ToDo</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-todo" class="toc-h2 toc-link" data-title="ToDos">Delete a Specific ToDo</a>
+                    <a href="#create-todo" class="toc-h2 toc-link" data-title="ToDos">Create ToDo</a>
                   </li>
                   <li>
-                    <a href="#success-response-3" class="toc-h2 toc-link" data-title="ToDos">Success Response:</a>
+                    <a href="#update-todo" class="toc-h2 toc-link" data-title="ToDos">Update ToDo</a>
+                  </li>
+                  <li>
+                    <a href="#update-status-todo" class="toc-h2 toc-link" data-title="ToDos">Update Status ToDo</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-specific-todo" class="toc-h2 toc-link" data-title="ToDos">Delete a Specific ToDo</a>
                   </li>
               </ul>
           </li>
@@ -281,12 +287,25 @@
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /api/v1/todos</code></p>
 <h3 id='success-response'>Success Response</h3>
-<p>Code: 200 OK
-    Content:[{}]</p>
-
-<p>Code: 200 OK
-    Content:[{&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;PENDING&quot;},{...},...]</p>
+<p><code>Code: 200 OK</code>
+<code>Content: [{}]</code>
+  OR<br>
+<code>Content:[{&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;PENDING&quot;},...]</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='data-parameters'>Data Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -322,8 +341,8 @@
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET api/v1/todos/:id</code></p>
 <h3 id='success-response-2'>Success Response:</h3>
-<p>Code: 200 OK
-    Content: {&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;PENDING&quot;}</p>
+<p><code>Code: 200 OK</code>
+<code>Content: {&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;PENDING&quot;}</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -336,6 +355,217 @@
 <td>id</td>
 <td>alphanumeric</td>
 <td>The ID of the ToDo to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='data-parameters-2'>Data Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='create-todo'>Create ToDo</h2><pre class="highlight javascript tab-javascript"><code>    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+      <span class="na">url</span><span class="p">:</span> <span class="s2">"/api/v1/todos"</span><span class="p">,</span>
+      <span class="na">dataType</span><span class="p">:</span> <span class="s2">"json"</span><span class="p">,</span>
+    <span class="nx">data</span> <span class="p">{</span>
+      <span class="na">title</span><span class="p">:</span> <span class="s2">"Task 001"</span>
+      <span class="na">description</span><span class="p">:</span> <span class="s2">"description 001"</span>
+      <span class="na">status</span><span class="p">:</span> <span class="s1">'PENDING'</span>
+    <span class="p">}</span>
+      <span class="nl">type</span> <span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+      <span class="na">success</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+    <span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task 001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates ToDo.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST api/v1/todos/</code></p>
+<h3 id='success-response-3'>Success Response:</h3>
+<p><code>Code: 200 OK</code>
+<code>Content: {&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;PENDING&quot;}</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>alphanumeric</td>
+<td>The ID of the ToDo to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='data-parameters-3'>Data Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>alphanumeric</td>
+<td>title of task</td>
+</tr>
+<tr>
+<td>description</td>
+<td>alphanumeric</td>
+<td>description of task</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status</td>
+<td>status of task</td>
+</tr>
+</tbody></table>
+<h2 id='update-todo'>Update ToDo</h2><pre class="highlight javascript tab-javascript"><code>    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+      <span class="na">url</span><span class="p">:</span> <span class="s2">"/api/v1/todos"</span><span class="p">,</span>
+      <span class="na">dataType</span><span class="p">:</span> <span class="s2">"json"</span><span class="p">,</span>
+    <span class="nx">data</span> <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="s2">"T001"</span>
+      <span class="na">title</span><span class="p">:</span> <span class="s2">"Task 001 edit"</span>
+      <span class="na">description</span><span class="p">:</span> <span class="s2">"description 001 edit"</span>
+      <span class="na">status</span><span class="p">:</span> <span class="s1">'DONE'</span>
+    <span class="p">}</span>
+      <span class="nl">type</span> <span class="p">:</span> <span class="s2">"PUT"</span><span class="p">,</span>
+      <span class="na">success</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+    <span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task 001 edit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 001 edit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DONE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates a specific ToDo.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT api/v1/todos/</code></p>
+<h3 id='success-response-4'>Success Response:</h3>
+<p><code>Code: 200 OK</code>
+<code>Content: {&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;DONE&quot;}</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='data-parameters-4'>Data Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>alphanumeric</td>
+<td>id of task</td>
+</tr>
+<tr>
+<td>title</td>
+<td>alphanumeric</td>
+<td>title of task</td>
+</tr>
+<tr>
+<td>description</td>
+<td>alphanumeric</td>
+<td>description of task</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status</td>
+<td>status of task</td>
+</tr>
+</tbody></table>
+<h2 id='update-status-todo'>Update Status ToDo</h2><pre class="highlight javascript tab-javascript"><code>    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+      <span class="na">url</span><span class="p">:</span> <span class="s2">"/api/v1/todos/T001/Status/DONE"</span><span class="p">,</span>
+      <span class="na">dataType</span><span class="p">:</span> <span class="s2">"json"</span><span class="p">,</span>
+      <span class="na">type</span> <span class="p">:</span> <span class="s2">"PUT"</span><span class="p">,</span>
+      <span class="na">success</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+    <span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task 001 edit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 001 edit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DONE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates the status of the specific ToDo.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>PUT api/v1/todos/:id/status/:status</code></p>
+<h3 id='success-response-5'>Success Response:</h3>
+<p><code>Code: 200 OK</code>
+<code>Content: {&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;DONE&quot;}</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>alphanumeric</td>
+<td>id of task</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status</td>
+<td>status of task</td>
+</tr>
+</tbody></table>
+<h3 id='data-parameters-5'>Data Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>None</td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='delete-a-specific-todo'>Delete a Specific ToDo</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
@@ -351,13 +581,13 @@
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre>
-<p>This endpoint delete a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<p>This endpoint deletes a specific kitten.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>DELETE /api/vi/todos/:id</code></p>
-<h2 id='success-response-3'>Success Response:</h2>
-<p>Code: 204 NO CONTENT
-    Content: {}</p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='success-response-6'>Success Response:</h3>
+<p><code>Code: 204 NO CONTENT</code>
+<code>Content: {}</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -369,6 +599,20 @@
 <td>id</td>
 <td>alphanumeric</td>
 <td>The ID of the ToDo to delete</td>
+</tr>
+</tbody></table>
+<h3 id='data-parameters-6'>Data Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>None</td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
