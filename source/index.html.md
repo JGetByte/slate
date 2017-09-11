@@ -2,14 +2,8 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
   - javascript
 
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
   - errors
@@ -19,80 +13,23 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+ToDo REST API Documentation
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+This page was created with [Slate](https://github.com/tripit/slate).
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+# ToDos
 
-# Authentication
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+## Get All ToDos
 
 ```javascript
-const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
-```
+  $.ajax({
+	  url: "/api/v1/todos",
+	  dataType: "json",
+	  type : "GET",
+	  success : function(r) { }
+	});
 
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
 ```
 
 > The above command returns JSON structured like this:
@@ -100,140 +37,114 @@ let kittens = api.kittens.get();
 ```json
 [
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
+    "id": "T001",
+    "title": "title 001",
+    "description": "description 001",
+    "status": "PENDING"
   },
   {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    "id": "T002",
+    "title": "title 002",
+    "description": "description 002",
+    "status": "PENDING"
   }
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all Todos.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET /api/v1/todos`
+
+### Success Response
+
+	Code: 200 OK
+	Content:[{}]
+	
+  Code: 200 OK
+	Content:[{"id": "T001", "title": "Task 1", "description": "Task description 1", "status": "PENDING"},{...},...]
 
 ### Query Parameters
 
-Parameter | Default | Description
+Parameter | Type    | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+None      |         |
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
+## Get a Specific ToDo
 
 ```javascript
-const kittn = require('kittn');
+	$.ajax({
+	  url: "/api/v1/todos/T001",
+	  dataType: "json",
+	  type : "GET",
+	  success : function(r) { }
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+	});
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
+  {
+    "id": "T001",
+    "title": "title 001",
+    "description": "description 001",
+    "status": "PENDING"
+  }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint retrieves a specific ToDo.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET api/v1/todos/:id`
+
+### Success Response:
+
+	Code: 200 OK
+	Content: {"id": "T001", "title": "Task 1", "description": "Task description 1", "status": "PENDING"}
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+Parameter | Type    |Description
+--------- | ------- |-----------
+id        |  alphanumeric       |The ID of the ToDo to retrieve
 
-## Delete a Specific Kitten
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
+## Delete a Specific ToDo
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+$.ajax({
+	  url: "/api/v1/todos/00T1",
+	  dataType: "json",
+	  data: {}
+	  type : "DELETE",
+	  success : function(r) { }
+	});	
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
+{}
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint delete a specific kitten.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`DELETE /api/vi/todos/:id`
+
+## Success Response:
+
+	Code: 204 NO CONTENT
+	Content: {}
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+Parameter | Type    | Description
+--------- | ------- | -----------
+id        |alphanumeric       |The ID of the ToDo to delete
 
