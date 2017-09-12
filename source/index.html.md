@@ -60,8 +60,11 @@ This endpoint retrieves all Todos.
 ### Success Response
 
 `Code: 200 OK`
+
 `Content: [{}]`
+
   OR	
+
 `Content:[{"id": "T001", "title": "Task 1", "description": "Task description 1", "status": "PENDING"},...]`
 
 ### Query Parameters
@@ -108,6 +111,7 @@ This endpoint retrieves a specific ToDo.
 ### Success Response:
 
 `Code: 200 OK`
+
 `Content: {"id": "T001", "title": "Task 1", "description": "Task description 1", "status": "PENDING"}`
 
 ### URL Parameters
@@ -159,6 +163,7 @@ This endpoint creates ToDo.
 ### Success Response:
 
 `Code: 200 OK`
+
 `Content: {"id": "T001", "title": "Task 1", "description": "Task description 1", "status": "PENDING"}`
 
 ### URL Parameters
@@ -196,12 +201,7 @@ status  | Status  | status of task
 > The above command returns JSON structured like this:
 
 ```json
-  {
-    "id": "T001",
-    "title": "Task 001 edit",
-    "description": "description 001 edit",
-    "status": "DONE"
-  }
+  {}
 ```
 
 This endpoint updates a specific ToDo.
@@ -212,8 +212,9 @@ This endpoint updates a specific ToDo.
 
 ### Success Response:
 
-`Code: 200 OK`
-`Content: {"id": "T001", "title": "Task 1", "description": "Task description 1", "status": "DONE"}`
+`Code: 204 NO CONTENT`
+
+`Content: {}`
 
 ### URL Parameters
 
@@ -245,12 +246,7 @@ status  | Status  | status of task
 > The above command returns JSON structured like this:
 
 ```json
-  {
-    "id": "T001",
-    "title": "Task 001 edit",
-    "description": "description 001 edit",
-    "status": "DONE"
-  }
+  {}
 ```
 
 This endpoint updates the status of the specific ToDo.
@@ -261,8 +257,9 @@ This endpoint updates the status of the specific ToDo.
 
 ### Success Response:
 
-`Code: 200 OK`
-`Content: {"id": "T001", "title": "Task 1", "description": "Task description 1", "status": "DONE"}`
+`Code: 204 NO CONTENT`
+
+`Content: {}`
 
 ### URL Parameters
 
@@ -305,6 +302,7 @@ This endpoint deletes a specific kitten.
 ### Success Response:
 
 `Code: 204 NO CONTENT`
+
 `Content: {}`
 
 ### URL Parameters
