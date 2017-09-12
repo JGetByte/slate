@@ -287,10 +287,13 @@
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET /api/v1/todos</code></p>
 <h3 id='success-response'>Success Response</h3>
-<p><code>Code: 200 OK</code>
-<code>Content: [{}]</code>
-  OR<br>
-<code>Content:[{&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;PENDING&quot;},...]</code></p>
+<p><code>Code: 200 OK</code></p>
+
+<p><code>Content: [{}]</code></p>
+
+<p>OR    </p>
+
+<p><code>Content:[{&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;PENDING&quot;},...]</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -341,8 +344,9 @@
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET api/v1/todos/:id</code></p>
 <h3 id='success-response-2'>Success Response:</h3>
-<p><code>Code: 200 OK</code>
-<code>Content: {&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;PENDING&quot;}</code></p>
+<p><code>Code: 200 OK</code></p>
+
+<p><code>Content: {&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;PENDING&quot;}</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -398,8 +402,9 @@
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST api/v1/todos/</code></p>
 <h3 id='success-response-3'>Success Response:</h3>
-<p><code>Code: 200 OK</code>
-<code>Content: {&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;PENDING&quot;}</code></p>
+<p><code>Code: 200 OK</code></p>
+
+<p><code>Content: {&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;PENDING&quot;}</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -455,19 +460,15 @@
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task 001 edit"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 001 edit"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DONE"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates a specific ToDo.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>PUT api/v1/todos/</code></p>
 <h3 id='success-response-4'>Success Response:</h3>
-<p><code>Code: 200 OK</code>
-<code>Content: {&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;DONE&quot;}</code></p>
+<p><code>Code: 204 NO CONTENT</code></p>
+
+<p><code>Content: {}</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -522,19 +523,15 @@
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"T001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task 001 edit"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 001 edit"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DONE"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates the status of the specific ToDo.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>PUT api/v1/todos/:id/status/:status</code></p>
 <h3 id='success-response-5'>Success Response:</h3>
-<p><code>Code: 200 OK</code>
-<code>Content: {&quot;id&quot;: &quot;T001&quot;, &quot;title&quot;: &quot;Task 1&quot;, &quot;description&quot;: &quot;Task description 1&quot;, &quot;status&quot;: &quot;DONE&quot;}</code></p>
+<p><code>Code: 204 NO CONTENT</code></p>
+
+<p><code>Content: {}</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -585,8 +582,9 @@
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>DELETE /api/vi/todos/:id</code></p>
 <h3 id='success-response-6'>Success Response:</h3>
-<p><code>Code: 204 NO CONTENT</code>
-<code>Content: {}</code></p>
+<p><code>Code: 204 NO CONTENT</code></p>
+
+<p><code>Content: {}</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -623,16 +621,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>400</td>
+<td>Invalid Request -- Invalid id</td>
+</tr>
+<tr>
 <td>404</td>
 <td>Not Found -- The task could not be found.</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
 
